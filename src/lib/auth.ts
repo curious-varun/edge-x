@@ -4,7 +4,7 @@ import { db as prisma } from "@/db";
 import { generateUsername } from "@/utils/generate-username";
 import { ROLE, PUBLIC_ROUTES, AUTHENTICATED_ROUTES, ADMIN_ROUTES } from "@/constants"
 
-export const { auth, handlers } = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,

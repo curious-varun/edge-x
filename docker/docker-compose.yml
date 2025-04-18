@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio-x
+    ports:
+      - "9000:9000"  # MinIO Console
+      - "9001:9001"  # MinIO Admin Console
+    environment:
+      MINIO_ROOT_USER: user # Change this to your desired username
+      MINIO_ROOT_PASSWORD: password # Change this to a strong password
+    command: server /data --console-address ":9001"
+    volumes:
+      - ./docker/data:/data
+      - ./docker/config:/root/.minio
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres-x
+    ports:
+      - "5432:5432"  # Default PostgreSQL port
+    environment:
+      POSTGRES_USER: johndoe  # Username
+      POSTGRES_PASSWORD: randompassword  # Password
+      POSTGRES_DB: mydb  # Database name
+    volumes:
+      - ./docker/postgres-data:/var/lib/postgresql/data

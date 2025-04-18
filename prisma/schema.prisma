@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -23,9 +22,9 @@ model CourseContent {
 }
 
 model User {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
+  email       String  @unique
+  phoneNumber String? @unique
   name        String
-  imageUrl    String
-  email       String
-  phoneNumber String
+  imageUrl    String?
 }

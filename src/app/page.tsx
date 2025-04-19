@@ -1,21 +1,18 @@
-"use client";
+import { ThemeToggleButton } from "@/components/global/theme-toggle-button";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-import { useSession } from "next-auth/react";
-
-export default function HomePage() {
-  const { data: session, status } = useSession();
-
-  if (status === "loading") return <p>Loading session...</p>;
-
+export default function Page() {
   return (
-    <main>
-      <h1>Home Page</h1>
-      {session ? (
-        <p>✅ Logged in as {session.user?.email}</p>
-      ) : (
-        <p>❌ Not logged in</p>
-      )}
-    </main>
+    <>
+      <div className="w-full h-full flex items-center justify-center p-4">
+        <h1 className="text-5xl font-semibold m-10 bg-clip-text text-transparent bg-gradient-to-tr from-blue-700 via-cyan-400 to-blue-500"> Page </h1>
+        <ThemeToggleButton />
+      </div>
+      <div className="w-full h-full flex items-center justify-center p-4">
+        <Link href="/login"> <Button variant="outline"> Login </Button> </Link>
+      </div>
+    </>
   );
 }
 

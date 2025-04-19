@@ -31,14 +31,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return false;
       }
     },
-    async session({ session, token }) {
-      if (session.user && token) {
-        session.user.email = token.email as string;
-        session.user.image = token.image as string;
-        session.user.role = token.role as ROLE;
-      }
-      return session;
-    },
     async jwt({ token, user }) {
       if (user) {
         token.email = user.email;
@@ -48,8 +40,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return token;
     },
+    async session({ session, token }) {
+      if (session.user && token) {
+        session.user.email = token.email as string;
+        session.user.image = token.image as string;
+        session.user.role = token.role as ROLE;
+      }
+      return session;
+    },
     authorized: async ({ auth, request }) => {
       const { nextUrl } = request;
+      if (
+        nextUrl.pathname.startsWith("/api/auth/") // Allow NextAuth API routes
+      ) {
+        return true
+      }
+
+
       if (PUBLIC_ROUTES.includes(nextUrl.pathname)) {
         return true;
       }

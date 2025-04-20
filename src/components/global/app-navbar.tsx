@@ -5,13 +5,13 @@ import {
   NavItems,
   MobileNav,
   NavbarLogo,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/layout/resizable-navbar";
 import { LoginForm } from "@/features/auth/componenets/login-form";
 import { useState } from "react";
+import Link from "next/link";
 
 export function AppNavBar() {
   const navItems = [
@@ -29,11 +29,14 @@ export function AppNavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <Navbar className="m-0">
+    <Navbar className="" key={"nav-bar"}>
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
+        <div className="flex gap-4">
+          <LoginForm asModal />
+        </div>
       </NavBody>
 
       {/* Mobile Navigation */}
@@ -50,19 +53,20 @@ export function AppNavBar() {
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
         >
+          <div className="flex gap-4 item-center justify-center ">
+            <LoginForm asModal />
+          </div>
           {navItems.map((item, idx) => (
-            <a
+            <Link
               key={`mobile-link-${idx}`}
               href={item.link}
               onClick={() => setIsMobileMenuOpen(false)}
               className="relative text-neutral-600 dark:text-neutral-300"
             >
               <span className="block">{item.name}</span>
-            </a>
+            </Link>
           ))}
-          <div className="flex w-full flex-col gap-4">
-            <LoginForm asModal />
-          </div>
+
         </MobileNavMenu>
       </MobileNav>
     </Navbar>

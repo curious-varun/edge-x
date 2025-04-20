@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import { signIn, useSession } from "next-auth/react";
+import { signOut, signIn, useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,12 +18,22 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useSearchParams } from "next/navigation";
-import { ArrowRightCircle, ExternalLink } from "lucide-react";
+import { ArrowRightCircle, LogOut, User, ExternalLink, Sun, Moon } from "lucide-react";
 import Link from "next/link";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
+
+
 
 export function LoginForm({ asModal }: { asModal?: boolean }) {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams?.get("callbackUrl") || "/";
 
@@ -97,16 +108,53 @@ export function LoginForm({ asModal }: { asModal?: boolean }) {
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={setOpen} >
       <DialogTrigger asChild>
-        <Button className="flex items-center gap-2">
-          Login
-          <ArrowRightCircle />
-        </Button>
+        {((status === "loading") || (session)) ?
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Avatar className="h-8 w-8  cursor-pointer">
+                <AvatarImage src={session?.user.image ?? ""} alt="User" />
+                <AvatarFallback>{"U"}</AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent className="w-48">
+              <Link href={"/profile"} passHref>
+                <DropdownMenuItem asChild>
+                  <div className="flex items-center space-x-2 cursor-pointer">
+                    <User className=" mr-2  h-[1.2rem] w-[1.2rem] " />
+                    <span>{"profile"}</span>
+                  </div>
+                </DropdownMenuItem>
+              </Link>
+              <DropdownMenuItem
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                className="cursor-pointer "
+              >
+                <div className="flex items-center space-x-2 cursor-pointer">
+                  <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                  <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                </div>
+                toggle theme
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer text-red-500">
+                <LogOut className="mr-2 ml-0.5   h-[1.2rem] w-[1.2rem]" />
+                sign out
+              </DropdownMenuItem>
+
+            </DropdownMenuContent>
+          </DropdownMenu>
+          :
+          <Button className="cursor-pointer z-100 flex items-center gap-2 rounded-full">
+            Login
+            <ArrowRightCircle />
+          </Button>
+        }
       </DialogTrigger>
       <DialogContent className="sm:max-w-md p-0 bg-transparent border-none">
         <LoginContent />
       </DialogContent>
-    </Dialog>
+    </Dialog >
   );
 }

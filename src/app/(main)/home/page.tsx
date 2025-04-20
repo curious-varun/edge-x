@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from "next/link"
@@ -39,39 +40,39 @@ export default function LandingPage() {
 
   const features = [
     {
-      title: "Smart Automation",
-      description: "Automate repetitive tasks and workflows to save time and reduce errors.",
+      title: "Expert Analysis",
+      description: "Learn proven betting strategies from professional analysts with decades of experience.",
       icon: <Zap className="size-5" />,
     },
     {
-      title: "Advanced Analytics",
-      description: "Gain valuable insights with real-time data visualization and reporting.",
+      title: "Market Insights",
+      description: "Access real-time data analysis and visual representations of betting market trends.",
       icon: <BarChart className="size-5" />,
     },
     {
-      title: "Team Collaboration",
-      description: "Work together seamlessly with integrated communication tools.",
+      title: "Community Support",
+      description: "Join a thriving community of bettors who share tips, strategies, and insights.",
       icon: <Users className="size-5" />,
     },
     {
-      title: "Enterprise Security",
-      description: "Keep your data safe with end-to-end encryption and compliance features.",
+      title: "Risk Management",
+      description: "Master bankroll management techniques to protect your investments and maximize ROI.",
       icon: <Shield className="size-5" />,
     },
     {
-      title: "Seamless Integration",
-      description: "Connect with your favorite tools through our extensive API ecosystem.",
+      title: "Multi-platform Access",
+      description: "Study anywhere with seamless access across desktop, tablet, and mobile devices.",
       icon: <Layers className="size-5" />,
     },
     {
-      title: "24/7 Support",
-      description: "Get help whenever you need it with our dedicated support team.",
+      title: "24/7 Mentor Support",
+      description: "Get answers to your questions anytime with our dedicated mentor support team.",
       icon: <Star className="size-5" />,
     },
   ]
 
   return (
-    <div className="px-24">
+    <div className="lg:px-24">
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full pt-4 overflow-hidden">
@@ -85,36 +86,38 @@ export default function LandingPage() {
               className="text-center max-w-3xl mx-auto mb-12"
             >
               <Badge className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
-                Launching Soon
+                Enrollment Open
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-                Elevate Your Workflow with SaaSify
+                Master The Art of Strategic Betting
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                The all-in-one platform that helps teams collaborate, automate, and deliver exceptional results.
-                Streamline your processes and focus on what matters most.
+                Learn professional betting strategies, risk management, and market analysis from industry experts.
+                Transform your approach to sports and casino betting with data-driven methods.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="rounded-full h-12 px-8 text-base">
-                  Start Free Trial
+                  <span className="ml-4">
+                    Enroll Now
+                  </span>
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full h-12 px-8 text-base">
-                  Book a Demo
+                <Button size="lg" variant="secondary" className="rounded-full h-12 px-8 text-base">
+                  Watch Free Preview
                 </Button>
               </div>
               <div className="flex items-center justify-center gap-4 mt-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Check className="size-4 text-primary" />
-                  <span>No credit card</span>
+                  <span>100% Money-back guarantee</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Check className="size-4 text-primary" />
-                  <span>14-day trial</span>
+                  <span>Lifetime access</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Check className="size-4 text-primary" />
-                  <span>Cancel anytime</span>
+                  <span>Regular updates</span>
                 </div>
               </div>
             </motion.div>
@@ -127,10 +130,10 @@ export default function LandingPage() {
             >
               <div className="rounded-xl overflow-hidden shadow-2xl border border-border/40 bg-gradient-to-b from-background to-muted/20">
                 <Image
-                  src="/logo.png"
+                  src="/gambling.jpg"
                   width={1280}
                   height={720}
-                  alt="SaaSify dashboard"
+                  alt="BettingPro course dashboard"
                   className="w-full h-auto"
                   priority
                 />
@@ -146,13 +149,13 @@ export default function LandingPage() {
         <section className="w-full py-12 border-y bg-muted/30">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <p className="text-sm font-medium text-muted-foreground">Trusted by innovative companies worldwide</p>
+              <p className="text-sm font-medium text-muted-foreground">Trusted by professional bettors worldwide</p>
               <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Image
                     key={i}
                     src={`/placeholder-logo.svg`}
-                    alt={`Company logo ${i}`}
+                    alt={`Partner logo ${i}`}
                     width={120}
                     height={60}
                     className="h-8 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
@@ -174,12 +177,12 @@ export default function LandingPage() {
               className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
             >
               <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
-                Features
+                Course Features
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Everything You Need to Succeed</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Everything You Need to Win</h2>
               <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Our comprehensive platform provides all the tools you need to streamline your workflow, boost
-                productivity, and achieve your goals.
+                Our comprehensive course provides all the tools and knowledge you need to make informed betting decisions
+                and develop a winning strategy.
               </p>
             </motion.div>
 
@@ -222,9 +225,9 @@ export default function LandingPage() {
               <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
                 How It Works
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Simple Process, Powerful Results</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Simple Learning Path, Powerful Results</h2>
               <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Get started in minutes and see the difference our platform can make for your business.
+                Our structured learning path takes you from beginner to advanced in a clear, step-by-step approach.
               </p>
             </motion.div>
 
@@ -234,18 +237,18 @@ export default function LandingPage() {
               {[
                 {
                   step: "01",
-                  title: "Create Account",
-                  description: "Sign up in seconds with just your email. No credit card required to get started.",
+                  title: "Learn Fundamentals",
+                  description: "Master the core concepts of strategic betting, odds analysis, and risk assessment.",
                 },
                 {
                   step: "02",
-                  title: "Configure Workspace",
-                  description: "Customize your workspace to match your team's unique workflow and requirements.",
+                  title: "Practice Strategies",
+                  description: "Apply your knowledge with practical exercises and real-world betting scenarios.",
                 },
                 {
                   step: "03",
-                  title: "Boost Productivity",
-                  description: "Start using our powerful features to streamline processes and achieve your goals.",
+                  title: "Refine Your Approach",
+                  description: "Develop your personal betting system with advanced techniques and market analysis.",
                 },
               ].map((step, i) => (
                 <motion.div
@@ -280,9 +283,9 @@ export default function LandingPage() {
               <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
                 Testimonials
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Loved by Teams Worldwide</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Success Stories from Our Students</h2>
               <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Don't just take our word for it. See what our customers have to say about their experience.
+                Hear what our graduates have to say about how our course transformed their betting approach.
               </p>
             </motion.div>
 
@@ -290,44 +293,44 @@ export default function LandingPage() {
               {[
                 {
                   quote:
-                    "SaaSify has transformed how we manage our projects. The automation features have saved us countless hours of manual work.",
-                  author: "Sarah Johnson",
-                  role: "Project Manager, TechCorp",
+                    "This course completely changed my approach to sports betting. The risk management strategies alone saved me thousands in potential losses.",
+                  author: "Mark Thompson",
+                  role: "Professional Sports Bettor",
                   rating: 5,
                 },
                 {
                   quote:
-                    "The analytics dashboard provides insights we never had access to before. It's helped us make data-driven decisions that have improved our ROI.",
-                  author: "Michael Chen",
-                  role: "Marketing Director, GrowthLabs",
+                    "The analytics module opened my eyes to patterns I never noticed before. I'm now making consistent profits using the statistical methods taught.",
+                  author: "Jennifer Lee",
+                  role: "Data Analyst & Weekend Bettor",
                   rating: 5,
                 },
                 {
                   quote:
-                    "Customer support is exceptional. Any time we've had an issue, the team has been quick to respond and resolve it. Couldn't ask for better service.",
-                  author: "Emily Rodriguez",
-                  role: "Operations Lead, StartupX",
+                    "The community support is incredible. Having access to experienced mentors who answer questions promptly has accelerated my learning curve.",
+                  author: "Carlos Rodriguez",
+                  role: "Semi-Professional Bettor",
                   rating: 5,
                 },
                 {
                   quote:
-                    "We've tried several similar solutions, but none compare to the ease of use and comprehensive features of SaaSify. It's been a game-changer.",
-                  author: "David Kim",
-                  role: "CEO, InnovateNow",
+                    "I was skeptical at first, but after applying the course strategies, my ROI has increased by 27% in just three months. The results speak for themselves.",
+                  author: "David Williams",
+                  role: "Former Recreational Bettor",
                   rating: 5,
                 },
                 {
                   quote:
-                    "The collaboration tools have made remote work so much easier for our team. We're more productive than ever despite being spread across different time zones.",
-                  author: "Lisa Patel",
-                  role: "HR Director, RemoteFirst",
+                    "Learning proper bankroll management transformed my betting experience. I'm no longer emotional about losses and have a systematic approach to every wager.",
+                  author: "Lisa Chen",
+                  role: "Part-time Sports Investor",
                   rating: 5,
                 },
                 {
                   quote:
-                    "Implementation was seamless, and the ROI was almost immediate. We've reduced our operational costs by 30% since switching to SaaSify.",
+                    "The course paid for itself within the first month. The value proposition market strategy alone has completely changed how I identify betting opportunities.",
                   author: "James Wilson",
-                  role: "COO, ScaleUp Inc",
+                  role: "Full-time Betting Professional",
                   rating: 5,
                 },
               ].map((testimonial, i) => (
@@ -378,11 +381,11 @@ export default function LandingPage() {
               className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
             >
               <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
-                Pricing
+                Course Packages
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Simple, Transparent Pricing</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Investment in Your Success</h2>
               <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Choose the plan that's right for your business. All plans include a 14-day free trial.
+                Choose the package that best fits your goals. All packages include our 30-day money-back guarantee.
               </p>
             </motion.div>
 
@@ -391,10 +394,10 @@ export default function LandingPage() {
                 <div className="flex justify-center mb-8">
                   <TabsList className="rounded-full p-1">
                     <TabsTrigger value="monthly" className="rounded-full px-6">
-                      Monthly
+                      One-time Payment
                     </TabsTrigger>
                     <TabsTrigger value="annually" className="rounded-full px-6">
-                      Annually (Save 20%)
+                      Payment Plan (4 installments)
                     </TabsTrigger>
                   </TabsList>
                 </div>
@@ -402,39 +405,39 @@ export default function LandingPage() {
                   <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
                     {[
                       {
-                        name: "Starter",
-                        price: "$29",
-                        description: "Perfect for small teams and startups.",
-                        features: ["Up to 5 team members", "Basic analytics", "5GB storage", "Email support"],
-                        cta: "Start Free Trial",
+                        name: "Beginner",
+                        price: "$297",
+                        description: "Perfect for beginners starting their betting journey.",
+                        features: ["Core strategy modules", "Basic analytics tools", "Community forum access", "Email support"],
+                        cta: "Enroll Now",
                       },
                       {
-                        name: "Professional",
-                        price: "$79",
-                        description: "Ideal for growing businesses.",
+                        name: "Pro Bettor",
+                        price: "$597",
+                        description: "For serious bettors looking to maximize profits.",
                         features: [
-                          "Up to 20 team members",
-                          "Advanced analytics",
-                          "25GB storage",
+                          "All Beginner features",
+                          "Advanced analytics dashboard",
+                          "1-on-1 strategy session",
                           "Priority email support",
-                          "API access",
+                          "Market analysis workshops",
                         ],
-                        cta: "Start Free Trial",
+                        cta: "Enroll Now",
                         popular: true,
                       },
                       {
-                        name: "Enterprise",
-                        price: "$199",
-                        description: "For large organizations with complex needs.",
+                        name: "Master Class",
+                        price: "$997",
+                        description: "Comprehensive training for professional-level results.",
                         features: [
-                          "Unlimited team members",
-                          "Custom analytics",
-                          "Unlimited storage",
-                          "24/7 phone & email support",
-                          "Advanced API access",
-                          "Custom integrations",
+                          "All Pro Bettor features",
+                          "Custom strategy development",
+                          "Unlimited strategy sessions",
+                          "24/7 mentor access",
+                          "Private mastermind group",
+                          "Proprietary betting tools",
                         ],
-                        cta: "Contact Sales",
+                        cta: "Apply Now",
                       },
                     ].map((plan, i) => (
                       <motion.div
@@ -456,7 +459,7 @@ export default function LandingPage() {
                             <h3 className="text-2xl font-bold">{plan.name}</h3>
                             <div className="flex items-baseline mt-4">
                               <span className="text-4xl font-bold">{plan.price}</span>
-                              <span className="text-muted-foreground ml-1">/month</span>
+                              <span className="text-muted-foreground ml-1">one-time</span>
                             </div>
                             <p className="text-muted-foreground mt-2">{plan.description}</p>
                             <ul className="space-y-3 my-6 flex-grow">
@@ -483,39 +486,39 @@ export default function LandingPage() {
                   <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
                     {[
                       {
-                        name: "Starter",
-                        price: "$23",
-                        description: "Perfect for small teams and startups.",
-                        features: ["Up to 5 team members", "Basic analytics", "5GB storage", "Email support"],
-                        cta: "Start Free Trial",
+                        name: "Beginner",
+                        price: "$79",
+                        description: "Perfect for beginners starting their betting journey.",
+                        features: ["Core strategy modules", "Basic analytics tools", "Community forum access", "Email support"],
+                        cta: "Enroll Now",
                       },
                       {
-                        name: "Professional",
-                        price: "$63",
-                        description: "Ideal for growing businesses.",
+                        name: "Pro Bettor",
+                        price: "$159",
+                        description: "For serious bettors looking to maximize profits.",
                         features: [
-                          "Up to 20 team members",
-                          "Advanced analytics",
-                          "25GB storage",
+                          "All Beginner features",
+                          "Advanced analytics dashboard",
+                          "1-on-1 strategy session",
                           "Priority email support",
-                          "API access",
+                          "Market analysis workshops",
                         ],
-                        cta: "Start Free Trial",
+                        cta: "Enroll Now",
                         popular: true,
                       },
                       {
-                        name: "Enterprise",
-                        price: "$159",
-                        description: "For large organizations with complex needs.",
+                        name: "Master Class",
+                        price: "$259",
+                        description: "Comprehensive training for professional-level results.",
                         features: [
-                          "Unlimited team members",
-                          "Custom analytics",
-                          "Unlimited storage",
-                          "24/7 phone & email support",
-                          "Advanced API access",
-                          "Custom integrations",
+                          "All Pro Bettor features",
+                          "Custom strategy development",
+                          "Unlimited strategy sessions",
+                          "24/7 mentor access",
+                          "Private mastermind group",
+                          "Proprietary betting tools",
                         ],
-                        cta: "Contact Sales",
+                        cta: "Apply Now",
                       },
                     ].map((plan, i) => (
                       <motion.div
@@ -539,6 +542,7 @@ export default function LandingPage() {
                               <span className="text-4xl font-bold">{plan.price}</span>
                               <span className="text-muted-foreground ml-1">/month</span>
                             </div>
+                            <p className="text-muted-foreground mt-2">4 monthly payments</p>
                             <p className="text-muted-foreground mt-2">{plan.description}</p>
                             <ul className="space-y-3 my-6 flex-grow">
                               {plan.features.map((feature, j) => (
@@ -564,7 +568,6 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-
         {/* FAQ Section */}
         <section id="faq" className="w-full py-20 md:py-32">
           <div className="container px-4 md:px-6">

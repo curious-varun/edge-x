@@ -8,10 +8,12 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
+  NavbarButton,
 } from "@/components/ui/resizable-navbar";
 import { LoginForm } from "@/features/auth/componenets/login-form";
 import { useState } from "react";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 export function AppNavBar() {
   const navItems = [
@@ -34,7 +36,10 @@ export function AppNavBar() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
-        <div className="flex gap-4">
+        <div className="flex gap-5 item-center justify-center ">
+          <NavbarButton variant="gradient" className="tex-sm rounded-full" href="/my-courses">
+            My courses
+          </NavbarButton>
           <LoginForm asModal />
         </div>
       </NavBody>

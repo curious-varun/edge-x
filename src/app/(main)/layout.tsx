@@ -1,4 +1,4 @@
-import { AppNavBar } from "@/components/global/app-navbar";
+import { AppNavBar } from "@/components/layout/app-navbar";
 
 
 

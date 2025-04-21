@@ -1,4 +1,8 @@
 export const PROTECTED_ROUTES: string[] = ["/my-courses"];
+export const ADMIN_EMAILS = process.env.ADMIN_EMAILS ? process.env.ADMIN_EMAILS.split(',') : [
+  "devvarunbhardwaj@gmail.com",
+  "vaurn.ai@gmail.com"
+];
 
 export enum ROLE { USER = "user", ADMIN = "admin" }
 
@@ -11,13 +15,8 @@ import {
   Inbox,
   Airplay,
   Currency,
+  LayoutDashboard,
 } from "lucide-react";
-
-export const userData = {
-  name: "shadcn",
-  email: "m@example.com",
-  avatar: "/avatars/shadcn.jpg",
-};
 
 export interface SectionType {
   sectionName: string;
@@ -44,8 +43,14 @@ export const sidebarNavigationSection: SectionType[] = [
       {
         itemName: "dashboard",
         isCollapsible: false,
-        icon: Home,
+        icon: LayoutDashboard,
         url: "/admin",
+      },
+      {
+        itemName: "home",
+        isCollapsible: false,
+        icon: Home,
+        url: "/",
       },
     ],
   },
@@ -75,7 +80,7 @@ export const sidebarNavigationSection: SectionType[] = [
         itemName: "0verview",
         isCollapsible: false,
         icon: Currency,
-        url: "/admin/finance",
+        url: "/admin/making",
       },
       {
         itemName: "Transactions",
@@ -103,4 +108,3 @@ export const sidebarNavigationSection: SectionType[] = [
     ],
   },
 ];
-

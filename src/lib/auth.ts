@@ -2,12 +2,9 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { db as prisma } from "@/db";
 import { generateUsername } from "@/utils/generate-username";
-import { ROLE, PROTECTED_ROUTES } from "@/constants"
+import { ROLE, PROTECTED_ROUTES, ADMIN_EMAILS } from "@/constants";
 
-const ADMIN_EMAILS = process.env.ADMIN_EMAILS ? process.env.ADMIN_EMAILS.split(',') : [
-  "devvarunbhardwaj@gmail.com",
-  "vaurn.ai@gmail.com"
-];
+
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [

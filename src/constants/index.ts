@@ -1,26 +1,16 @@
-export const PUBLIC_ROUTES: string[] = [
-  "/",
-  "client",
-];
+export const PROTECTED_ROUTES: string[] = ["/my-courses"];
 
-
-export const AUTHENTICATED_ROUTES: string[] = [
-  "/protected"
-];
-
-export const ADMIN_ROUTES: string[] = [
-];
-
-export enum ROLE {
-  USER = "user",
-  ADMIN = "admin"
-}
+export enum ROLE { USER = "user", ADMIN = "admin" }
 
 import {
   type LucideIcon,
-  LayoutPanelTopIcon,
-  CircleCheckBig,
-  UserCheck,
+  Home,
+  User,
+  MessageCircle,
+  Coins,
+  Inbox,
+  Airplay,
+  Currency,
 } from "lucide-react";
 
 export const userData = {
@@ -49,30 +39,68 @@ export interface SubItemType {
 
 export const sidebarNavigationSection: SectionType[] = [
   {
-    sectionName: "High Command",
+    sectionName: "Home",
     items: [
       {
-        itemName: "Infrastructure",
-        isCollapsible: true,
-        icon: LayoutPanelTopIcon,
-        subItems: [
-          { subItemName: "text", url: "/test" },
-          { subItemName: "Labs", url: "/infrastructure/labs" },
-          { subItemName: "Exam Pattern", url: "/infrastructure/exams-pattern" },
-        ],
+        itemName: "dashboard",
+        isCollapsible: false,
+        icon: Home,
+        url: "/admin",
+      },
+    ],
+  },
+  {
+    sectionName: "Management",
+    items: [
+      {
+        itemName: "courses",
+        isCollapsible: false,
+        icon: Airplay,
+        url: "/admin/courses",
+      },
+
+
+      {
+        itemName: "users",
+        isCollapsible: false,
+        icon: User,
+        url: "/admin/user",
+      },
+    ],
+  },
+  {
+    sectionName: "Finance",
+    items: [
+      {
+        itemName: "0verview",
+        isCollapsible: false,
+        icon: Currency,
+        url: "/admin/finance",
       },
       {
-        itemName: "Roles & Permissions",
+        itemName: "Transactions",
         isCollapsible: false,
-        icon: UserCheck,
-        url: "/roles-permissions",
+        icon: Coins,
+        url: "admin/finance/transactions",
+      },
+    ],
+  },
+  {
+    sectionName: "Communication",
+    items: [
+      {
+        itemName: "messages",
+        isCollapsible: false,
+        icon: MessageCircle,
+        url: "/admin/messages",
       },
       {
-        itemName: "Approvals",
+        itemName: "requests",
         isCollapsible: false,
-        icon: CircleCheckBig,
-        url: "/approvals",
+        icon: Inbox,
+        url: "admin/messages/request",
       },
     ],
   },
 ];
+

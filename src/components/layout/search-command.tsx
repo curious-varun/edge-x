@@ -57,18 +57,7 @@ export function SearchCommand() {
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Themes">
-            <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
-              <span className="flex gap-2">
-                <Moon /> Dark
-              </span>
-            </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
-              <span className="flex gap-2">
-                <Sun /> Light
-              </span>
-            </CommandItem>
-          </CommandGroup>
+
           <CommandGroup heading="Links">
 
             {data.map((section) =>
@@ -97,6 +86,18 @@ export function SearchCommand() {
               )
             )}
 
+          </CommandGroup>
+          <CommandGroup heading="Themes">
+            <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
+              <span className="flex gap-2">
+                <Moon /> Dark
+              </span>
+            </CommandItem>
+            <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
+              <span className="flex gap-2">
+                <Sun /> Light
+              </span>
+            </CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog >

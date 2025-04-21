@@ -4,6 +4,11 @@ import { db as prisma } from "@/db";
 import { generateUsername } from "@/utils/generate-username";
 import { ROLE, PROTECTED_ROUTES } from "@/constants"
 
+const ADMIN_EMAILS = process.env.ADMIN_EMAILS ? process.env.ADMIN_EMAILS.split(',') : [
+  "devvarunbhardwaj@gmail.com",
+  "vaurn.ai@gmail.com"
+];
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GoogleProvider({
@@ -35,8 +40,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         token.email = user.email;
         token.image = user.image;
-        // Always set the role to USER for Google provider logins
-        token.role = ROLE.USER;
+        // Always check if our env file have those 
+        token.role = ADMIN_EMAILS.includes(user.email || '') ? ROLE.ADMIN : ROLE.USER;
       }
       return token;
     },

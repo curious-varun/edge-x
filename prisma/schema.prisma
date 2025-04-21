@@ -18,6 +18,8 @@ model Course {
 model CourseContent {
   id          Int      @id @default(autoincrement())
   description String?
+  videoUrl    String
+  thumbnail   String
   createdAT   DateTime @default(now())
 }
 

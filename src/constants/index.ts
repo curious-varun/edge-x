@@ -16,6 +16,7 @@ import {
   Airplay,
   Currency,
   LayoutDashboard,
+  CloudUpload,
 } from "lucide-react";
 
 export interface SectionType {
@@ -63,8 +64,12 @@ export const sidebarNavigationSection: SectionType[] = [
         icon: Airplay,
         url: "/admin/courses",
       },
-
-
+      {
+        itemName: "media-bucket",
+        isCollapsible: false,
+        icon: CloudUpload,
+        url: "/admin/media-bucket",
+      },
       {
         itemName: "users",
         isCollapsible: false,
@@ -77,7 +82,7 @@ export const sidebarNavigationSection: SectionType[] = [
     sectionName: "Finance",
     items: [
       {
-        itemName: "0verview",
+        itemName: "Overview",
         isCollapsible: false,
         icon: Currency,
         url: "/admin/making",

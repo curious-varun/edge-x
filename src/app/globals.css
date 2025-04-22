@@ -142,7 +142,8 @@
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.8 0.3 250);
+  /* --sidebar-ring: oklch(0.8 0.3 250); */
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 @layer base {
@@ -152,4 +153,16 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* browser scrollbar  */
+*::-webkit-scrollbar-thumb {
+  background: #888;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
 }

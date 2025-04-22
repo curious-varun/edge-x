@@ -4,7 +4,7 @@ import Link from "next/link";
 export const CourseGrid = () => {
   return (
     <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {Array.from({ length: 5 }).map((_, i) => (
+      {Array.from({ length: 50 }).map((_, i) => (
         <Link
           href="/"
           key={i}

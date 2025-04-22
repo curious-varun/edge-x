@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PlusCircle, XIcon } from "lucide-react";
+import { LoaderCircle, PlusCircle, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger, } from "@/components/ui/sheet";
 import { CourseCreateSchema } from "../actions/add-course-action/schema";
@@ -21,17 +21,30 @@ import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { SidebarFooter, SidebarHeader } from "@/components/ui/sidebar";
+import { SidebarHeader } from "@/components/ui/sidebar";
 import { useTransition } from "react";
+import { useAction } from "@/hooks/use-action";
+import { createCourseAction } from "../actions/add-course-action";
+import { toast } from 'sonner';
 
 export function AddCourseForm() {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition()
 
+  const { execute, fieldErrors } = useAction(createCourseAction, {
+    onSuccess: () => {
+      toast("course created");
+      form.reset();
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
 
   function onSubmit(values: InputTypeCreateCourse) {
     startTransition(async () => {
-
+      execute(values);
+      setOpen(false);
     });
   }
 
@@ -65,14 +78,14 @@ export function AddCourseForm() {
       >
 
         <ScrollArea className="h-screen">
-          <SidebarHeader className="relative px-8">
-            <SheetTitle>Create Course </SheetTitle>
+          <SidebarHeader className="relative px-6 pt-4 ">
+            <SheetTitle className="font-bold text-xl">Create Course </SheetTitle>
             <Button
               onClick={() => {
                 form.reset()
                 setOpen(false)
               }}
-              className="ring-offset-background focus:ring-ring  absolute top-4 right-6 rounded-xs   focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none h-4 w-4 "
+              className="ring-offset-background focus:ring-ring  absolute top-4 right-6 rounded-xs   focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none h-4 w-4 opacity-80"
               size='icon'
             >
               <XIcon className="size-4" />
@@ -137,6 +150,7 @@ export function AddCourseForm() {
                 )}
               />
 
+
               <FormField
                 control={form.control}
                 name="price"
@@ -144,23 +158,24 @@ export function AddCourseForm() {
                   <FormItem>
                     <FormLabel>Price (INR)</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="1000" {...field} />
+                      <Input
+                        type="number"
+                        placeholder="1000"
+                        {...field}
+                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-
+              <Button className="absolute  bottom-3 " type="submit" disabled={isPending}>
+                {isPending ? <LoaderCircle /> : <>   Create Course  <PlusCircle /></>}
+              </Button>
             </form>
           </Form>
-
         </ScrollArea>
-        <SidebarFooter>
-          <Button type="submit" disabled={isPending}>
-            {isPending ? "Submitting..." : "Create Course"}
-          </Button>
-        </SidebarFooter>
       </SheetContent >
     </Sheet >
   );

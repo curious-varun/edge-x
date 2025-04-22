@@ -11,7 +11,7 @@ import { db } from '@/db';
 
 async function createCourseHandler(data: InputTypeCreateCourse): Promise<ReturnTypeCreateCourseAction> {
   const session = await auth();
-  if (!session || !session.user.id || session.user.role != ROLE.ADMIN) {
+  if (!session || session.user.role != ROLE.ADMIN) {
     return { error: 'Unauthorized' };
   }
 

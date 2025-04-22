@@ -21,7 +21,7 @@ import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { SidebarHeader } from "@/components/ui/sidebar";
+import { SidebarFooter, SidebarHeader } from "@/components/ui/sidebar";
 import { useTransition } from "react";
 
 export function AddCourseForm() {
@@ -29,7 +29,7 @@ export function AddCourseForm() {
   const [isPending, startTransition] = useTransition()
 
 
-  function onSubmit(values: z.infer<typeof datesheetFormSchema>) {
+  function onSubmit(values: InputTypeCreateCourse) {
     startTransition(async () => {
 
     });
@@ -40,7 +40,9 @@ export function AddCourseForm() {
     defaultValues: {
       title: "",
       description: "",
+      bannerImage: "",
       openToEveryone: false,
+      price: 0,
     },
   });
 
@@ -149,12 +151,16 @@ export function AddCourseForm() {
                 )}
               />
 
-              <Button type="submit" disabled={isPending}>
-                {isPending ? "Submitting..." : "Create Course"}
-              </Button>
+
             </form>
           </Form>
+
         </ScrollArea>
+        <SidebarFooter>
+          <Button type="submit" disabled={isPending}>
+            {isPending ? "Submitting..." : "Create Course"}
+          </Button>
+        </SidebarFooter>
       </SheetContent >
     </Sheet >
   );

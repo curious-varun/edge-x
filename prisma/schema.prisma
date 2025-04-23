@@ -7,7 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// add update and created at here 
 model Course {
   id             Int             @id @default(autoincrement())
   title          String
@@ -16,7 +15,7 @@ model Course {
   openToEveryone Boolean         @default(false)
   price          Int
   userPurchases  UserPurchase[]
-  contents       CourseContent[] // Optional if content will be linked to Course
+  contents       CourseContent[]
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
 }
@@ -27,8 +26,9 @@ model CourseContent {
   videoUrl       String
   thumbnailImage String
   createdAt      DateTime @default(now())
-  Course         Course?  @relation(fields: [courseId], references: [id])
-  courseId       Int?
+
+  Course   Course @relation(fields: [courseId], references: [id])
+  courseId Int
 }
 
 model User {
@@ -51,13 +51,14 @@ model UserPurchase {
 }
 
 model Video {
-  id             Int    @id @default(autoincrement())
-  videoUrl       String @unique
-  thumbnailImage String @unique
+  id             Int     @id @default(autoincrement())
+  title          String?
+  videoUrl       String  @unique
+  thumbnailImage String  @unique
 }
 
 model Image {
   id       Int    @id @default(autoincrement())
-  name     String @unique
+  title    String @unique
   imageUrl String
 }

@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "next-auth/react";
+import { RecoilRoot } from 'recoil';
 
 export const Providers = ({ children }: { children: ReactNode }) => {
 
@@ -15,7 +16,7 @@ export const Providers = ({ children }: { children: ReactNode }) => {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <RecoilRoot>{children}</RecoilRoot>
           <Toaster position="top-right" />
         </ThemeProvider>
       </SessionProvider>

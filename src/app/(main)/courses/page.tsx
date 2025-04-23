@@ -17,9 +17,7 @@ export default async function CoursesPage() {
       </div>
       <div className="mt-20 relative max-w-[1250px] mx-auto  ">
         <Glow />
-        {JSON.stringify(courses)}
         <CourseGrid courses={courses} />
-
       </div>
     </>
   )

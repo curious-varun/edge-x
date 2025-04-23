@@ -91,8 +91,8 @@ export const CourseGrid = ({ courses, view = "grid", toggleOption = true }: Cour
   const [currentView, setCurrentView] = useState<"grid" | "list">(view);
 
   return (
-    <div className="space-y-4">
-      {toggleOption &&
+    <div className="space-y-4 p-6">
+      {(toggleOption && courses.length > 0) &&
         <div className="flex justify-end gap-2">
           <Button
             variant={currentView === "grid" ? "default" : "outline"}

@@ -33,8 +33,9 @@ export function AddCourseForm() {
 
   const { execute } = useAction(createCourseAction, {
     onSuccess: () => {
-      toast("course created");
       form.reset();
+      setOpen(false);
+      toast("course created");
     },
     onError: (error) => {
       toast.error(error);
@@ -44,7 +45,6 @@ export function AddCourseForm() {
   function onSubmit(values: InputTypeCreateCourse) {
     startTransition(async () => {
       execute(values);
-      setOpen(false);
     });
   }
 

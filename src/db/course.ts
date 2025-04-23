@@ -13,8 +13,8 @@ export type getCoursesType = Prisma.CourseGetPayload<{
     updatedAt: true;
   }
 }>
-export async function getPublicCourses() {
-  const courses = db.course.findMany({
+export async function getPublicCourses(id: number) {
+  const courses = db.course.findUnique({
     select: {
       id: true,
       title: true,
@@ -25,7 +25,10 @@ export async function getPublicCourses() {
       updatedAt: true,
 
     },
-    where: { openToEveryone: true }
+    where: {
+      id: id,
+      openToEveryone: true
+    }
   });
   return courses;
 }

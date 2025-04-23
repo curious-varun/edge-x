@@ -1,13 +1,8 @@
-import { AppSidebar } from "@/features/admin/components/admin-sidebar";
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar"
-import { AdminNavBar } from "@/features/admin/components/admin-nav-bar";
-
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { AdminNavBar } from "@/components/layout/admin-nav-bar";
+import { AppSidebar } from "@/components/layout/admin-sidebar";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
-
   return (
     <SidebarProvider>
       <AppSidebar />

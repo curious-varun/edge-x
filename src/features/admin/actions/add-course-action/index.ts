@@ -6,7 +6,7 @@ import { CourseCreateSchema } from './schema';
 import { ROLE } from '@/constants';
 import { auth } from '@/lib/auth';
 import { db } from '@/db';
-
+import { reloadCourcesPage } from '@/reload';
 
 
 async function createCourseHandler(data: InputTypeCreateCourse): Promise<ReturnTypeCreateCourseAction> {
@@ -27,6 +27,7 @@ async function createCourseHandler(data: InputTypeCreateCourse): Promise<ReturnT
         openToEveryone,
       },
     });
+    reloadCourcesPage();
     return { data: result };
   } catch (error) {
     console.error('Error in createCourseHandler:', error);

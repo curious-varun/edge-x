@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoaderCircle, PlusCircle, XIcon } from "lucide-react";
+import { ChevronsRight, LoaderCircle, PlusCircle, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger, } from "@/components/ui/sheet";
 import { CourseCreateSchema } from "../actions/add-course-action/schema";
@@ -31,7 +31,7 @@ export function AddCourseForm() {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition()
 
-  const { execute, fieldErrors } = useAction(createCourseAction, {
+  const { execute } = useAction(createCourseAction, {
     onSuccess: () => {
       toast("course created");
       form.reset();
@@ -76,7 +76,6 @@ export function AddCourseForm() {
         }
         onEscapeKeyDown={(e) => e.preventDefault()}
       >
-
         <ScrollArea className="h-screen">
           <SidebarHeader className="relative px-6 pt-4 ">
             <SheetTitle className="font-bold text-xl">Create Course </SheetTitle>
@@ -85,10 +84,10 @@ export function AddCourseForm() {
                 form.reset()
                 setOpen(false)
               }}
-              className="ring-offset-background focus:ring-ring  absolute top-4 right-6 rounded-xs   focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none h-4 w-4 opacity-80"
-              size='icon'
+              className="ring-offset-background focus:ring-ring  absolute top-4 right-6 rounded-xs   focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none size-7   bg-transparent"
+              variant="secondary"
             >
-              <XIcon className="size-4" />
+              <ChevronsRight className="size-6" />
             </Button>
           </SidebarHeader>
 
@@ -180,4 +179,3 @@ export function AddCourseForm() {
     </Sheet >
   );
 }
-

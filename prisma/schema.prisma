@@ -7,6 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// add update and created at here 
 model Course {
   id             Int             @id @default(autoincrement())
   title          String
@@ -16,6 +17,8 @@ model Course {
   price          Int
   userPurchases  UserPurchase[]
   contents       CourseContent[] // Optional if content will be linked to Course
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
 }
 
 model CourseContent {

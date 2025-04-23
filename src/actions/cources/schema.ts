@@ -1,4 +1,4 @@
 import { z } from 'zod';
 
-export const CourseGetSchema = z.object({ onlyPublic: z.boolean() });
+export const CourseGetSchema = z.object({ showPrivate: z.boolean() });
 

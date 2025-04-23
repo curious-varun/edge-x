@@ -10,24 +10,42 @@ import { db } from '@/db';
 
 
 async function getCourseHandler(data: InputTypeGetCourse): Promise<ReturnTypeGetCourseAction> {
-  const session = await auth();
-  if (!session || session.user.role != ROLE.ADMIN) {
-    return { error: 'Unauthorized' };
-  }
   try {
-    const result = await db.course.findMany({
-      select: {
-        id: true,
-        title: true,
-        bannerImage: true,
-        description: true,
-        openToEveryone: true,
-        price: true,
-        createdAt: true,
-        updatedAt: true,
+    if (data.showPrivate) {
+      const session = await auth();
+      if (!session || session.user.role != ROLE.ADMIN) {
+        return { error: 'Unauthorized' };
       }
-    });
-    return { data: result };
+      const result = await db.course.findMany({
+        select: {
+          id: true,
+          title: true,
+          bannerImage: true,
+          description: true,
+          openToEveryone: true,
+          price: true,
+          createdAt: true,
+          updatedAt: true,
+        }
+      });
+      return { data: result };
+    }
+    else {
+      const result = await db.course.findMany({
+        select: {
+          id: true,
+          title: true,
+          bannerImage: true,
+          description: true,
+          openToEveryone: true,
+          price: true,
+          createdAt: true,
+          updatedAt: true,
+        }
+      });
+      return { data: result };
+    }
+
   } catch (error) {
     console.error('Error in createCourseHandler:', error);
     return { error: 'Failed to create answer.' };
@@ -35,4 +53,3 @@ async function getCourseHandler(data: InputTypeGetCourse): Promise<ReturnTypeGet
 }
 
 export const createCourseAction = createSafeAction(CourseGetSchema, getCourseHandler);
-

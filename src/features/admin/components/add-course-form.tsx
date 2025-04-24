@@ -1,15 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { ChevronsRight, LoaderCircle, PlusCircle, XIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger, } from "@/components/ui/sheet";
 import { CourseCreateSchema } from "../actions/add-course-action/schema";
 import { InputTypeCreateCourse } from "../actions/add-course-action/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
 import {
-
   Form,
   FormControl,
   FormField,
@@ -18,13 +17,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
+import { createCourseAction } from "../actions/add-course-action";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SidebarHeader } from "@/components/ui/sidebar";
-import { useTransition } from "react";
+import { Textarea } from "@/components/ui/textarea";
 import { useAction } from "@/hooks/use-action";
-import { createCourseAction } from "../actions/add-course-action";
+import { Input } from "@/components/ui/input";
+import { useTransition } from "react";
 import { toast } from 'sonner';
 
 export function AddCourseForm() {
@@ -32,10 +31,10 @@ export function AddCourseForm() {
   const [isPending, startTransition] = useTransition()
 
   const { execute } = useAction(createCourseAction, {
-    onSuccess: () => {
+    onSuccess: (data) => {
       form.reset();
       setOpen(false);
-      toast("course created");
+      toast(`${data.title} created`);
     },
     onError: (error) => {
       toast.error(error);

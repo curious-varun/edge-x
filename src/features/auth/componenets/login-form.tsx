@@ -18,7 +18,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useSearchParams } from "next/navigation";
-import { ArrowRightCircle, LogOut, User, ExternalLink, Sun, Moon, UserCog } from "lucide-react";
+import { LogOut, User, ExternalLink, Sun, Moon, Waypoints } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -133,7 +133,7 @@ export function LoginForm({ asModal }: { asModal?: boolean }) {
                 session?.user.role === ROLE.ADMIN && <Link href={"/admin"} passHref>
                   <DropdownMenuItem asChild>
                     <div className="flex items-center space-x-2 cursor-pointer">
-                      <UserCog className=" mr-2  h-[1.2rem] w-[1.2rem] " />
+                      <Waypoints className=" mr-2  h-[1.2rem] w-[1.2rem] " />
                       <span> admin </span>
                     </div>
                   </DropdownMenuItem>

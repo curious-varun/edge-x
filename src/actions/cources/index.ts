@@ -52,4 +52,4 @@ async function getCourseHandler(data: InputTypeGetCourse): Promise<ReturnTypeGet
   }
 }
 
-export const createCourseAction = createSafeAction(CourseGetSchema, getCourseHandler);
+export const getCourseAction = createSafeAction(CourseGetSchema, getCourseHandler);

@@ -1,5 +1,6 @@
 import { AddCourseForm } from "@/features/admin/components/add-course-form";
 import { ChangeViewMode } from "@/components/global/change-view-mode-button";
+import { CourseList } from "@/features/temp/components/course-grid";
 
 
 
@@ -16,7 +17,8 @@ export default async function AdminCoursePage() {
       </div>
       <div className="h-0.5 w-full top-0 bg-gradient-to-r from-transparent via-primary to-transparent" />
       <main className="p-4">
-        main content here
+        {/* //TODO: implemt the state-management and cashing  */}
+        <CourseList />
       </main >
     </div >
   );

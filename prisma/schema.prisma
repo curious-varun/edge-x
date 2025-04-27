@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Course {
-  id             Int             @id @default(autoincrement())
+  id             String          @id @default(cuid())
   title          String
   bannerImage    String
   description    String
@@ -28,7 +28,7 @@ model CourseContent {
   createdAt      DateTime @default(now())
 
   Course   Course @relation(fields: [courseId], references: [id])
-  courseId Int
+  courseId String
 }
 
 model User {
@@ -44,7 +44,7 @@ model UserPurchase {
   user       User     @relation(fields: [userId], references: [id])
   userId     String
   course     Course   @relation(fields: [courseId], references: [id])
-  courseId   Int
+  courseId   String
   assignedAt DateTime @default(now())
 
   @@id([userId, courseId])

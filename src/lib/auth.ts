@@ -17,9 +17,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async signIn({ user }) {
       try {
-        const existingUser = await prisma.user.findUnique({ where: { email: user.email! } });
+        let existingUser = await prisma.user.findUnique({ where: { email: user.email! } });
         if (!existingUser && user.email) {
-          await prisma.user.create({
+          existingUser = await prisma.user.create({
             data: {
               email: user.email,
               imageUrl: user.image,
@@ -27,6 +27,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             },
           });
         }
+        if (existingUser) {
+          user.id = existingUser.id;
+        }
+
         return true;
       } catch (error) {
         console.error("Error during sign-in:", error);
@@ -35,6 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async jwt({ token, user }) {
       if (user) {
+        token.id = user.id;
         token.email = user.email;
         token.image = user.image;
         // Always check if our env file have those 
@@ -44,6 +49,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session, token }) {
       if (session.user && token) {
+        session.user.id = token.id as string;
         session.user.email = token.email as string;
         session.user.image = token.image as string;
         session.user.role = token.role as ROLE;

@@ -49,7 +49,7 @@ export function CourseList() {
               </div>
             </CardContent>
             <CardFooter>
-              <Link href={`/admin/course/${course.id}`} className="w-full -mt-4">
+              <Link href={`/course/${course.id}`} className="w-full -mt-4">
                 <Button variant="outline" className="w-full bg-accent/80 flex items-center justify-center gap-2" > go to course<SquareArrowOutUpRight className="size-4" /> </Button>
               </Link>
             </CardFooter>

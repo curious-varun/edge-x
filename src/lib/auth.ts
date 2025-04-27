@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { db as prisma } from "@/db";
-import { generateUsername } from "@/utils/generate-username";
+import { generateId } from "@/utils/generate-id";
 import { ROLE, PROTECTED_ROUTES, ADMIN_EMAILS } from "@/constants";
 
 
@@ -21,9 +21,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!existingUser && user.email) {
           existingUser = await prisma.user.create({
             data: {
+              id: generateId(user.email),
               email: user.email,
               imageUrl: user.image,
-              name: user.name ?? generateUsername(user.email),
+              name: user.name ?? generateId(user.email),
             },
           });
         }

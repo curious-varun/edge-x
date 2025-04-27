@@ -7,6 +7,7 @@ import { ROLE } from '@/constants';
 import { auth } from '@/lib/auth';
 import { db } from '@/db';
 import { reloadCourcesPage } from '@/reload';
+import { generateId } from '@/utils/generate-id';
 
 
 async function createCourseHandler(data: InputTypeCreateCourse): Promise<ReturnTypeCreateCourseAction> {
@@ -20,6 +21,7 @@ async function createCourseHandler(data: InputTypeCreateCourse): Promise<ReturnT
   try {
     const result = await db.course.create({
       data: {
+        id: generateId(title),
         title,
         bannerImage,
         description,

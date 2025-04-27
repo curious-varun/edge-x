@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-export function generateUsername(email: string | null): string {
+export function generateId(email: string | null): string {
   console.log(" generateUsername is called ");
   if (!email) {
     // Return a short UUID if email is null

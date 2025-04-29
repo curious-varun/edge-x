@@ -1,5 +1,5 @@
 import { ActionState } from '@/lib/create-safe-action';
-import { CourseGetSchema } from './schema';
+import { CourseGetByIdSchema, CourseGetSchema } from './schema';
 import { Prisma } from "@prisma/client";
 import { z } from 'zod';
 
@@ -17,5 +17,16 @@ export type ReturnTypeGetCourseAction = ActionState<InputTypeGetCourse, Array<Pr
     updatedAt: true;
   }
 }>>>;
+
+
+export type InputTypeGetCourseById = z.infer<typeof CourseGetByIdSchema>;
+export type ReturnTypeGetCourseByIdAction = ActionState<InputTypeGetCourseById, Prisma.CourseGetPayload<{
+  select: {
+    id: true;
+    title: true;
+    bannerImage: true;
+    price: true;
+  }
+}> | null>;
 
 

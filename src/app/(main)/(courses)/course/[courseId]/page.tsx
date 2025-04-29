@@ -1,16 +1,16 @@
 import { getUserPurchases, userPurchasesType } from "@/db/user-purchases";
+import { BuyCourseButton } from "@/features/purchase/components/buy-course-button";
 import { auth } from "@/lib/auth";
 import Image from "next/image";
 
 function hasAccess(courseId: string, data: userPurchasesType[]) {
-  return data.some((purchase) => purchase.courseId.toString() === courseId.toString());
+  return data.some((purchase) => purchase.courseId === courseId);
 }
 
-export default async function MainLayout({ params }: { params: { courseId: string } }) {
+export default async function CourseIdPage({ params }: { params: { courseId: string } }) {
   const courseId = params.courseId;
   const session = await auth();
   const data = await getUserPurchases(session?.user.id);
-
   const courseData = data.find((purchase) => purchase.courseId.toString() === courseId.toString());
   const isPurchased = hasAccess(courseId, data);
 
@@ -28,7 +28,7 @@ export default async function MainLayout({ params }: { params: { courseId: strin
             className="w-full h-60 object-cover"
           />
         ) : <> </>}
-        <div className="absolute bg-white -bottom-1 left-4">
+        <div className="">
           <h1 className="font-bold text-7xl">{courseData?.course?.title || "Course Title"}</h1>
         </div>
       </div>
@@ -58,6 +58,12 @@ export default async function MainLayout({ params }: { params: { courseId: strin
           </div>
         )}
       </div>
+
+      <BuyCourseButton
+        price={100}
+        courseId={courseId}
+      />
+
     </div >
   );
 }

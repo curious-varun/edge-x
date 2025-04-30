@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { IndianRupee } from "lucide-react";
 import { useEffect } from "react";
+import { createOrderAction, verifyPayment } from "../action";
 import { toast } from "sonner";
-import { createOrderAction } from "../action/payment";
 
 declare global {
   interface Window {
@@ -27,46 +27,44 @@ export function BuyCourseButton({ courseId }: BuyCourseButtonProps) {
   const handleBuyCourse = async () => {
     const res = await createOrderAction(courseId);
 
-    if ("error" in res) {
-      toast.error(res.error);
+    if (!res.success || !res.order) {
+      toast.error(res.message || "Failed to create order.");
       return;
     }
 
-    const order = res.data;
+    const order = res.order;
 
     const options = {
-      key: "rzp_test_Farf2sxVLw5xLw",
+      key: process.env.RAZORPAY_KEY_ID || "rzp_test_Yd0WbBPFLGOKOJ",
       amount: order.amount,
-      image: "/gambling.jpg",
       currency: order.currency,
       name: "edge-x",
       description: "Course Purchase",
+      image: "/gambling.jpg",
       order_id: order.id,
       handler: async function(response: any) {
         try {
+          alert(JSON.stringify(response));
           const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
 
-          const res = await fetch("/api/verify-payment", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ razorpay_order_id, razorpay_payment_id, razorpay_signature }),
+          const verify = await verifyPayment({
+            razorpay_order_id,
+            razorpay_payment_id,
+            razorpay_signature,
           });
-
-          const verify = await res.json();
-          toast(JSON.stringify(verify));
 
           if (verify.success) {
             toast.success(verify.message);
           } else {
-            toast.error(verify.error);
+            toast.error(verify.message || "Verification failed.");
           }
         } catch (error) {
-          console.error("Verification failed:", error);
+          console.error("Verification error:", error);
           toast.error("Verification failed. Please contact support.");
         }
       },
       theme: {
-        color: "#6366f1", // indigo-500
+        color: "#000000",
       },
     };
 

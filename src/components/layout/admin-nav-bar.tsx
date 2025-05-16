@@ -12,7 +12,9 @@ export function AdminNavBar() {
       <div className="flex items-center">
         <SidebarTrigger className="" />
         <Separator className="h-7 mx-2" orientation="vertical" />
-        <BreadcrumbHeader />
+        <span className="lg:block hidden">
+          <BreadcrumbHeader />
+        </span>
       </div>
 
 

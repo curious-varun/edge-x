@@ -42,7 +42,7 @@ export function BuyCourseButton({ courseId }: BuyCourseButtonProps) {
       description: "Course Purchase",
       image: "/gambling.jpg",
       order_id: order.id,
-      handler: async function(response: any) {
+      handler: async function (response: any) {
         try {
           alert(JSON.stringify(response));
           const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;

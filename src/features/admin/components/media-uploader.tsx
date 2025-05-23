@@ -141,11 +141,11 @@ export function MediaUploader() {
           setProgress(percentage)
           setStatus("uploading")
         },
-        onSuccess: (data) => {
-          alert(JSON.stringify(data))
+        onSuccess: async () => {
           setStatus("success")
           setProgress(100)
           // Reset form after successful upload
+          //TODO
           setTimeout(() => {
             setFile(null)
             setFileType(null)
@@ -247,7 +247,7 @@ export function MediaUploader() {
   return (
     <div className="my-4">
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">Media Title</label>
+        <label className="block text-sm font-medium dark:text-stone-300 text-gray-700 mb-1">Media Title</label>
         <input
           type="text"
           value={title}
@@ -263,7 +263,7 @@ export function MediaUploader() {
           onClick={triggerFileInput}
           onDragOver={handleDragOver}
           onDrop={handleDrop}
-          className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors"
+          className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-accent/50 transition-colors"
         >
           <input
             ref={fileInputRef}
